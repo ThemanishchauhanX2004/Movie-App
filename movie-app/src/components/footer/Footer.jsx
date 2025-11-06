@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import bg from "./../../assets/footer-bg.jpg";
-import logo from "./../../assets/logo.png";
-import * as Config from "./../../constants/Config";
+import bg from "../../assets/footer-bg.jpg";
+import logo from "../../assets/logo.png";
+import * as Config from "../../constants/Config";
 
 const Footer = () => {
   return (
@@ -29,77 +29,47 @@ const Footer = () => {
 
         {/* Menus */}
         <div className="grid grid-cols-3 gap-8 sm:grid-cols-3 mobile:grid-cols-2">
+          {/* First Menu */}
           <div className="flex flex-col items-start mt-[1rem] text-[1.5rem] font-semibold space-y-[1rem]">
-            <Link
-              to={`/${Config.HOME_PAGE}`}
-              className="hover:text-red-500 transition"
-            >
+            <Link to={`/${Config.HOME_PAGE}`} className="hover:text-red-500 transition">
               Home
             </Link>
-            <Link
-              to={`/${Config.HOME_PAGE}`}
-              className="hover:text-red-500 transition"
-            >
+            <Link to={`/${Config.HOME_PAGE}`} className="hover:text-red-500 transition">
               Contact us
             </Link>
-            <Link
-              to={`/${Config.HOME_PAGE}`}
-              className="hover:text-red-500 transition"
-            >
+            <Link to={`/${Config.HOME_PAGE}`} className="hover:text-red-500 transition">
               Terms of service
             </Link>
-            <Link
-              to={`/${Config.HOME_PAGE}`}
-              className="hover:text-red-500 transition"
-            >
+            <Link to={`/${Config.HOME_PAGE}`} className="hover:text-red-500 transition">
               About us
             </Link>
           </div>
 
+          {/* Second Menu */}
           <div className="flex flex-col items-start mt-[1rem] text-[1.5rem] font-semibold space-y-[1rem]">
-            <Link
-              to={`/${Config.HOME_PAGE}`}
-              className="hover:text-red-500 transition"
-            >
+            <Link to={`/${Config.HOME_PAGE}`} className="hover:text-red-500 transition">
               Live
             </Link>
-            <Link
-              to={`/${Config.HOME_PAGE}`}
-              className="hover:text-red-500 transition"
-            >
+            <Link to={`/${Config.HOME_PAGE}`} className="hover:text-red-500 transition">
               FAQ
             </Link>
-            <Link
-              to={`/${Config.HOME_PAGE}`}
-              className="hover:text-red-500 transition"
-            >
+            <Link to={`/${Config.HOME_PAGE}`} className="hover:text-red-500 transition">
               Premium
             </Link>
-            <Link
-              to={`/${Config.HOME_PAGE}`}
-              className="hover:text-red-500 transition"
-            >
+            <Link to={`/${Config.HOME_PAGE}`} className="hover:text-red-500 transition">
               Privacy policy
             </Link>
           </div>
 
+          {/* Third Menu */}
           <div className="flex flex-col items-start mt-[1rem] text-[1.5rem] font-semibold space-y-[1rem]">
-            <Link
-              to={`/${Config.HOME_PAGE}`}
-              className="hover:text-red-500 transition"
-            >
+            <Link to={`/${Config.HOME_PAGE}`} className="hover:text-red-500 transition">
               You must watch
             </Link>
-            <Link
-              to={`/${Config.HOME_PAGE}`}
-              className="hover:text-red-500 transition"
-            >
+            <Link to={`/${Config.HOME_PAGE}`} className="hover:text-red-500 transition">
               Recent release
             </Link>
-            <Link
-              to={`/${Config.HOME_PAGE}`}
-              className="hover:text-red-500 transition"
-            >
+            <Link to={`/${Config.HOME_PAGE}`} className="hover:text-red-500 transition">
               Top IMDB
             </Link>
           </div>
