@@ -1,3 +1,4 @@
+// Header.jsx
 import React, { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -16,26 +17,26 @@ const Header = () => {
 
   const active = headerNav.findIndex((e) => e.path === pathname);
 
- useEffect(() => {
-  const shrinkHeader = () => {
-    if (window.scrollY > 100) {
-      headerRef.current.style.backgroundColor = "rgba(17, 24, 39, 0.95)"; // bg-gray-900/95
-      headerRef.current.style.height = "4rem"; // h-16
-    } else {
-      headerRef.current.style.backgroundColor = "transparent";
-      headerRef.current.style.height = "6rem"; // h-24
-    }
-  };
+  useEffect(() => {
+    const shrinkHeader = () => {
+      if (window.scrollY > 100) {
+        headerRef.current.style.backgroundColor = "rgba(17, 24, 39, 0.95)"; // bg-gray-900/95
+        headerRef.current.style.height = "4rem"; // h-16
+      } else {
+        headerRef.current.style.backgroundColor = "transparent";
+        headerRef.current.style.height = "6rem"; // h-24
+      }
+    };
 
-  window.addEventListener("scroll", shrinkHeader);
-  return () => window.removeEventListener("scroll", shrinkHeader);
-}, []);
-
+    window.addEventListener("scroll", shrinkHeader);
+    return () => window.removeEventListener("scroll", shrinkHeader);
+  }, []);
 
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 w-full z-50 h-24 transition-all duration-300 bg-gray-900"
+      className="fixed top-0 left-0 w-full z-50 h-24 transition-all duration-300"
+      style={{ backgroundColor: "transparent" }}
     >
       <div className="max-w-[1200px] mx-auto h-full flex items-center justify-between px-8">
         {/* Logo */}

@@ -1,53 +1,41 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-
+// MovieList.jsx
+import React, { useState, useEffect } from "react";
+import tmdbApi, { category as cate } from "../../api/tmdbApi";
 import MovieCard from "../movie-card/MovieCard";
-import tmdbApi, { category } from "./../../api/tmdbApi";
 
-const MovieList = ({ category: cat, type, id }) => {
+const MovieList = ({ category, type }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     const getList = async () => {
-      let response = null;
-      const params = {};
+      try {
+        let response = null;
 
-      if (type !== "similar") {
-        response =
-          cat === category.movie
-            ? await tmdbApi.getMoviesList(type, { params })
-            : await tmdbApi.getTvList(type, { params });
-      } else {
-        response = await tmdbApi.similar(cat, id);
+        // Normal movie or TV list
+        if (type !== "similar") {
+          response = await tmdbApi.getMoviesList(type, { params: {} });
+        } 
+        // Agar "similar" type ho (optional)
+        else {
+          // response = await tmdbApi.similarMovies(id);
+        }
+
+        setItems(response.results);
+      } catch (error) {
+        console.error("Failed to fetch movies:", error);
       }
-
-      setItems(response.results);
     };
-    getList();
-  }, [cat, id, type]);
+
+    getList(); // API call on component mount
+  }, [category, type]); // run again only if category/type changes
 
   return (
-    <div className="movie-list">
-      <Swiper grabCursor={true} spaceBetween={10} slidesPerView={"auto"}>
-        {items.map((item, idx) => (
-          <SwiperSlide
-            key={idx}
-            className="!w-[15%] md:!w-[30%] sm:!w-[40%]"
-          >
-            <MovieCard item={item} category={cat} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    <div className="movie-list grid grid-cols-2 md:grid-cols-4 gap-4">
+      {items.map((item) => (
+        <MovieCard key={item.id} item={item} category={category} />
+      ))}
     </div>
   );
-};
-
-MovieList.propTypes = {
-  category: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  id: PropTypes.number,
 };
 
 export default MovieList;

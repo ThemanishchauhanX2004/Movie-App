@@ -1,7 +1,6 @@
 // Routes.js
-
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "../pages/Home";
 import Catalog from "../pages/Catalog";
@@ -12,6 +11,9 @@ import * as Config from "../constants/Config";
 const AppRoutes = () => {
   return (
     <Routes>
+      {/* Redirect root / to HOME_PAGE */}
+      <Route path="/" element={<Navigate to={`/${Config.HOME_PAGE}`} replace />} />
+
       <Route
         path={`/${Config.HOME_PAGE}/:category/search/:keyword`}
         element={<Catalog />}
